@@ -80,3 +80,18 @@ button {
 .clear {
   border-bottom: 2px solid #c9c1af;
 }
+
+button:hover {
+  background-color: #e7e1d2;
+}
+
+.clear:hover {
+  background-color: #d9e0b8;
+}
+
+.equal:hover {
+  background-color: #8a8468;
+}
+button:active {
+  transform: translateY(2px);
+}
