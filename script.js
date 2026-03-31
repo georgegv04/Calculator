@@ -1,3 +1,7 @@
+let firstNumber = "";
+let operator;
+let secondNumber = "";
+
 function add(num1, num2) {
   return num1 + num2;
 }
@@ -13,10 +17,6 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
   return num1 / num2;
 }
-
-let firstNumber;
-let operator;
-let secondNumber;
 
 function operate(num1, num2, operator) {
   switch (operator) {
@@ -34,4 +34,13 @@ function operate(num1, num2, operator) {
   }
 }
 
-// console.log(operate(4, 2, "/"));
+const digitButtons = document.querySelectorAll(".digit");
+const display = document.querySelector(".display");
+
+function clickButtons(digits) {
+  digits.addEventListener("click", (e) => {
+    console.log(e.target);
+  });
+}
+
+digitButtons.forEach(clickButtons);
