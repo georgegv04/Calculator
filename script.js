@@ -39,7 +39,8 @@ const display = document.querySelector(".display");
 
 function clickButtons(digits) {
   digits.addEventListener("click", (e) => {
-    console.log(e.target);
+    let numberClicked = e.target.textContent;
+    let updatedNumber = (display.textContent = firstNumber += numberClicked);
   });
 }
 
