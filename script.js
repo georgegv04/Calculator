@@ -40,7 +40,22 @@ const display = document.querySelector(".display");
 function clickButtons(digits) {
   digits.addEventListener("click", (e) => {
     let numberClicked = e.target.textContent;
-    let updatedNumber = (display.textContent = firstNumber += numberClicked);
+    if (firstNumber === "") {
+      if (numberClicked === "0") {
+        firstNumber = "0";
+      } else {
+        firstNumber = numberClicked;
+      }
+    } else if (firstNumber === "0") {
+      if (numberClicked === "0") {
+        firstNumber = "0";
+      } else {
+        firstNumber = numberClicked;
+      }
+    } else {
+      firstNumber += numberClicked;
+    }
+    display.textContent = firstNumber;
   });
 }
 
