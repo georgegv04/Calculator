@@ -20,6 +20,7 @@ body {
   font-size: 48px;
   color: #5e7347;
   text-align: center;
+  letter-spacing: 1.5px;
   margin-bottom: 18px;
   line-height: 1.1;
   text-shadow:
@@ -113,5 +114,35 @@ button:hover {
   background-color: #8a8468;
 }
 button:active {
+  transform: translateY(2px);
+}
+
+.signature {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.initials {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #5e7347;
+  line-height: 1;
+}
+
+.divider {
+  font-size: 30px;
+  color: #5e7347;
+  line-height: 1;
+}
+
+.signature-img {
+  height: 46px;
+  width: auto;
+  display: block;
+  opacity: 0.95;
   transform: translateY(2px);
 }
