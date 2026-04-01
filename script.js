@@ -18,7 +18,7 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-function operate(num1, num2, operator) {
+function operate(num1, operator, num2) {
   switch (operator) {
     case "+":
       return add(num1, num2);
@@ -34,12 +34,14 @@ function operate(num1, num2, operator) {
   }
 }
 
-const digitButtons = document.querySelectorAll(".digit");
+const numberButtons = document.querySelectorAll(".digit");
 const display = document.querySelector(".display");
+const operatorBtns = document.querySelectorAll(".operator");
 
-function clickButtons(digits) {
+function digitButtons(digits) {
   digits.addEventListener("click", (e) => {
     let numberClicked = e.target.textContent;
+
     if (firstNumber === "") {
       if (numberClicked === "0") {
         firstNumber = "0";
@@ -59,4 +61,11 @@ function clickButtons(digits) {
   });
 }
 
-digitButtons.forEach(clickButtons);
+function operatorButtons(operators) {
+  operators.addEventListener("click", (e) => {
+    let clickedOperator = e.target.textContent;
+  });
+}
+
+numberButtons.forEach(digitButtons);
+operatorBtns.forEach(operatorButtons);
