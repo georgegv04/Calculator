@@ -5,6 +5,7 @@ let secondNumber = "";
 const numberButtons = document.querySelectorAll(".digit");
 const display = document.querySelector(".display");
 const operatorBtns = document.querySelectorAll(".operator");
+const equalButton = document.querySelector(".equal");
 
 function add(num1, num2) {
   return num1 + num2;
@@ -30,10 +31,10 @@ function operate(num1, operator, num2) {
     case "-":
       return subtract(num1, num2);
 
-    case "*":
+    case "×":
       return multiply(num1, num2);
 
-    case "/":
+    case "÷":
       return divide(num1, num2);
   }
 }
@@ -69,6 +70,8 @@ function digitButtons(digits) {
       secondNumber = rejectLeadingZeros(secondNumber, numberClicked);
       display.textContent = secondNumber;
     }
+    // console.log(`First Number: ${firstNumber}`);
+    // console.log(`Second Number ${secondNumber}`);
   });
 }
 
@@ -77,6 +80,11 @@ function operatorButtons(operators) {
     operator = e.target.textContent;
   });
 }
+
+equalButton.addEventListener("click", () => {
+  let result = operate(+firstNumber, operator, +secondNumber);
+  display.textContent = result;
+});
 
 numberButtons.forEach(digitButtons);
 operatorBtns.forEach(operatorButtons);
