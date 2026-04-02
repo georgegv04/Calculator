@@ -61,6 +61,14 @@ function rejectLeadingZeros(currentNumber, digitClicked) {
 function digitButtons(digits) {
   digits.addEventListener("click", (e) => {
     let numberClicked = e.target.textContent;
+
+    if (operator === undefined) {
+      firstNumber = rejectLeadingZeros(firstNumber, numberClicked);
+      display.textContent = firstNumber;
+    } else {
+      secondNumber = rejectLeadingZeros(secondNumber, numberClicked);
+      display.textContent = secondNumber;
+    }
   });
 }
 
