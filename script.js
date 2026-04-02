@@ -2,6 +2,10 @@ let firstNumber = "";
 let operator;
 let secondNumber = "";
 
+const numberButtons = document.querySelectorAll(".digit");
+const display = document.querySelector(".display");
+const operatorBtns = document.querySelectorAll(".operator");
+
 function add(num1, num2) {
   return num1 + num2;
 }
@@ -34,67 +38,29 @@ function operate(num1, operator, num2) {
   }
 }
 
-// function rejectLeadingZeros(number) {
-//   if (number === "") {
-//     if (numberClicked === "0") {
-//       number = "0";
-//     } else {
-//       number = numberClicked;
-//     }
-//   } else if (number === "0") {
-//     if (numberClicked === "0") {
-//       number = "0";
-//     } else {
-//       number = numberClicked;
-//     }
-//   } else {
-//     number += numberClicked;
-//   }
-// }
+function rejectLeadingZeros(currentNumber, digitClicked) {
+  if (currentNumber === "") {
+    if (digitClicked === "0") {
+      currentNumber = "0";
+    } else {
+      currentNumber = digitClicked;
+    }
+  } else if (currentNumber === "0") {
+    if (digitClicked === "0") {
+      currentNumber = "0";
+    } else {
+      currentNumber = digitClicked;
+    }
+  } else {
+    currentNumber += digitClicked;
+  }
 
-const numberButtons = document.querySelectorAll(".digit");
-const display = document.querySelector(".display");
-const operatorBtns = document.querySelectorAll(".operator");
+  return currentNumber;
+}
 
 function digitButtons(digits) {
   digits.addEventListener("click", (e) => {
     let numberClicked = e.target.textContent;
-
-    if (operator === undefined) {
-      if (firstNumber === "") {
-        if (numberClicked === "0") {
-          firstNumber = "0";
-        } else {
-          firstNumber = numberClicked;
-        }
-      } else if (firstNumber === "0") {
-        if (numberClicked === "0") {
-          firstNumber = "0";
-        } else {
-          firstNumber = numberClicked;
-        }
-      } else {
-        firstNumber += numberClicked;
-      }
-      display.textContent = firstNumber;
-    } else {
-      if (secondNumber === "") {
-        if (numberClicked === "0") {
-          secondNumber = "0";
-        } else {
-          secondNumber = numberClicked;
-        }
-      } else if (secondNumber === "0") {
-        if (numberClicked === "0") {
-          secondNumber = "0";
-        } else {
-          secondNumber = numberClicked;
-        }
-      } else {
-        secondNumber += numberClicked;
-      }
-      display.textContent = secondNumber;
-    }
   });
 }
 
