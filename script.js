@@ -70,8 +70,6 @@ function digitButtons(digits) {
       secondNumber = rejectLeadingZeros(secondNumber, numberClicked);
       display.textContent = secondNumber;
     }
-    // console.log(`First Number: ${firstNumber}`);
-    // console.log(`Second Number ${secondNumber}`);
   });
 }
 
@@ -82,8 +80,17 @@ function operatorButtons(operators) {
 }
 
 equalButton.addEventListener("click", () => {
-  let result = operate(+firstNumber, operator, +secondNumber);
-  display.textContent = result;
+  if (firstNumber === "" && operator === undefined && secondNumber === "") {
+    display.textContent = "0";
+  } else if (operator === undefined && secondNumber === "") {
+    display.textContent = firstNumber;
+  } else {
+    let result = operate(+firstNumber, operator, +secondNumber);
+    display.textContent = result;
+    firstNumber = result;
+    operator = undefined;
+    secondNumber = "";
+  }
 });
 
 numberButtons.forEach(digitButtons);
