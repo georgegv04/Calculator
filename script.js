@@ -7,6 +7,7 @@ const display = document.querySelector(".display");
 const operatorBtns = document.querySelectorAll(".operator");
 const equalButton = document.querySelector(".equal");
 const clearButton = document.querySelector(".clear");
+const backspaceButton = document.querySelector(".backspace");
 
 function add(num1, num2) {
   return num1 + num2;
@@ -88,7 +89,7 @@ equalButton.addEventListener("click", () => {
   } else {
     let result = operate(+firstNumber, operator, +secondNumber);
     display.textContent = result;
-    firstNumber = result;
+    firstNumber = result.toString();
     operator = undefined;
     secondNumber = "";
   }
@@ -99,6 +100,20 @@ clearButton.addEventListener("click", () => {
   operator = undefined;
   secondNumber = "";
   display.textContent = "0";
+});
+
+backspaceButton.addEventListener("click", () => {
+  if (secondNumber !== "") {
+    secondNumber = secondNumber.slice(0, -1);
+    display.textContent = +secondNumber;
+  } else if (operator !== undefined && secondNumber === "") {
+    operator = undefined;
+  } else if (firstNumber !== "") {
+    firstNumber = firstNumber.slice(0, -1);
+    display.textContent = +firstNumber;
+  } else {
+    display.textContent = "0";
+  }
 });
 
 numberButtons.forEach(digitButtons);
