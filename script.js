@@ -65,7 +65,6 @@ function rejectLeadingZeros(currentNumber, digitClicked) {
 function digitButtons(digits) {
   digits.addEventListener("click", (e) => {
     let numberClicked = e.target.textContent;
-
     if (operator === undefined) {
       firstNumber = rejectLeadingZeros(firstNumber, numberClicked);
       display.textContent = firstNumber;
@@ -78,6 +77,12 @@ function digitButtons(digits) {
 
 function operatorButtons(operators) {
   operators.addEventListener("click", (e) => {
+    if (firstNumber !== "" && operator !== undefined && secondNumber !== "") {
+      let result = operate(+firstNumber, operator, +secondNumber);
+      firstNumber = result.toString();
+      secondNumber = "";
+      display.textContent = result;
+    }
     operator = e.target.textContent;
   });
 }
