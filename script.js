@@ -77,13 +77,30 @@ function digitButtons(digits) {
 
 function operatorButtons(operators) {
   operators.addEventListener("click", (e) => {
-    if (firstNumber !== "" && operator !== undefined && secondNumber !== "") {
-      let result = operate(+firstNumber, operator, +secondNumber);
-      firstNumber = result.toString();
-      secondNumber = "";
-      display.textContent = result;
+    if (
+      e.target.textContent === "-" &&
+      firstNumber === "" &&
+      operator === undefined
+    ) {
+      firstNumber = "-";
+      display.textContent = firstNumber;
+    } else if (
+      firstNumber !== "" &&
+      e.target.textContent === "-" &&
+      operator !== undefined &&
+      secondNumber === ""
+    ) {
+      secondNumber = "-";
+      display.textContent = secondNumber;
+    } else {
+      if (firstNumber !== "" && operator !== undefined && secondNumber !== "") {
+        let result = operate(+firstNumber, operator, +secondNumber);
+        firstNumber = result.toString();
+        secondNumber = "";
+        display.textContent = result;
+      }
+      operator = e.target.textContent;
     }
-    operator = e.target.textContent;
   });
 }
 
