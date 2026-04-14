@@ -8,6 +8,7 @@ const operatorBtns = document.querySelectorAll(".operator");
 const equalButton = document.querySelector(".equal");
 const clearButton = document.querySelector(".clear");
 const backspaceButton = document.querySelector(".backspace");
+const dotButton = document.querySelector(".dot-btn");
 
 function add(num1, num2) {
   return num1 + num2;
@@ -88,6 +89,7 @@ equalButton.addEventListener("click", () => {
     display.textContent = firstNumber;
   } else {
     let result = operate(+firstNumber, operator, +secondNumber);
+    result = Number(result.toFixed(2));
     display.textContent = result;
     firstNumber = result.toString();
     operator = undefined;
@@ -113,6 +115,28 @@ backspaceButton.addEventListener("click", () => {
     display.textContent = +firstNumber;
   } else {
     display.textContent = "0";
+  }
+});
+
+dotButton.addEventListener("click", () => {
+  if (operator === undefined) {
+    if (firstNumber === "") {
+      firstNumber = "0.";
+      display.textContent = firstNumber;
+    }
+    if (!firstNumber.includes(".")) {
+      firstNumber = firstNumber + ".";
+    }
+    display.textContent = firstNumber;
+  } else {
+    if (secondNumber === "") {
+      secondNumber = "0.";
+      display.textContent = secondNumber;
+    }
+    if (!secondNumber.includes(".")) {
+      secondNumber = secondNumber + ".";
+    }
+    display.textContent = secondNumber;
   }
 });
 
